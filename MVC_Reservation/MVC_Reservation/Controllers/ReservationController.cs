@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MVC_Reservation.Controllers
 {
-    public class ReservationController1 : Controller
+    public class ReservationController : Controller
     {
         private readonly string apiUrl = "https://localhost:44336/api/reservation";
 
