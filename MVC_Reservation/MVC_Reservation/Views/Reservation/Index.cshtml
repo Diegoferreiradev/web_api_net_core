@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_reservationLayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Lista de Reservas</h1>
 
-<a asp-action="AddReservation" class="btn btn-sm btn-primary">Incluir Reserva</a>
+<a asp-action="AddReservation" class="btn btn-sm btn-success">Incluir Reserva</a>
 <a asp-action="GetReservation" class="btn btn-sm btn-secondary">Obter Reserva</a>
 
 <table class="table table-sm table-striped table-bordered m-2">
@@ -15,8 +15,8 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Início</th>
-            <th>Fim</th>
+            <th>Localização Inicial</th>
+            <th>Localização Final</th>
             <th>Atualizar</th>
             <th>Deletar</th>
         </tr>

@@ -26,6 +26,24 @@ namespace MVC_Reservation.Controllers
 
             return View(listReservations);
         }
+
+        public ViewResult GetReservation() => View();
+
+        public async Task<IActionResult> GetReservation(int id)
+        {
+            Reservation reservation = new Reservation();
+
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync(apiUrl + "/" + id))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    reservation = JsonConvert.DeserializeObject<Reservation>(apiResponse);
+                }
+            }
+            return View(reservation);
+        }
     }
+
 }
 
