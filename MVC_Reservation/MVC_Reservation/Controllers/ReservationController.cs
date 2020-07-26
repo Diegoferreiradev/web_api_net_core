@@ -3,6 +3,7 @@ using MVC_Reservation.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace MVC_Reservation.Controllers
@@ -28,7 +29,7 @@ namespace MVC_Reservation.Controllers
         }
 
         public ViewResult GetReservation() => View();
-
+        [HttpPost]
         public async Task<IActionResult> GetReservation(int id)
         {
             Reservation reservation = new Reservation();
@@ -42,6 +43,25 @@ namespace MVC_Reservation.Controllers
                 }
             }
             return View(reservation);
+        }
+
+        public ViewResult AddReservation() => View();
+        [HttpPost]
+        public async Task<IActionResult> AddReservation(Reservation reservation)
+        {
+            Reservation reservationSend = new Reservation();
+
+            using (var httpCliente = new HttpClient())
+            {
+                StringContent content = new StringContent(JsonConvert.SerializeObject(reservation), Encoding.UTF8, "application/json");
+                using (var response = await httpCliente.PostAsync(apiUrl, content))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    reservationSend = JsonConvert.DeserializeObject<Reservation>(apiResponse);
+                }
+            }
+
+            return View(reservationSend);
         }
     }
 

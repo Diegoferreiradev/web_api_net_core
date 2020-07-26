@@ -7,7 +7,7 @@
 
 <h1>Lista de Reservas</h1>
 
-<a asp-action="AddReservation" class="btn btn-sm btn-success">Incluir Reserva</a>
+<a asp-action="AddReservation" class="btn btn-sm btn-primary">Incluir Reserva</a>
 <a asp-action="GetReservation" class="btn btn-sm btn-secondary">Obter Reserva</a>
 
 <table class="table table-sm table-striped table-bordered m-2">
@@ -15,8 +15,8 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Localização Inicial</th>
-            <th>Localização Final</th>
+            <th>Locação Inicial</th>
+            <th>Locação Final</th>
             <th>Atualizar</th>
             <th>Deletar</th>
         </tr>
@@ -27,8 +27,8 @@
         <tr>
             <td>@item.ReservaId</td>
             <td>@item.Nome</td>
-            <td>@item.InicioLocalizacao</td>
-            <td>@item.FimLocalizacao</td>
+            <td>@item.InicioLocacao</td>
+            <td>@item.FimLocacao</td>
             <td><a asp-action="UpdateReservation" asp-route-id="@item.ReservaId"><img src="~/icon/edit.png" /></a></td>
             <td>
                 <form asp-action="DeleteReservation" method="post">

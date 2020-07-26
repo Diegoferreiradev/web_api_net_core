@@ -13,11 +13,11 @@ namespace APIReservation.Services
 
             new List<Reservation>
             {
-                new Reservation { ReservaId = 1, Nome = "Diego Ferreira", InicioLocalizacao = "Recife", FimLocalizacao = "Av.Marquês de Olinda" },
-                new Reservation { ReservaId = 2, Nome = "Severina", InicioLocalizacao = "Jaboatão dos Guararapes", FimLocalizacao = "Av.Emirates" },
-                new Reservation { ReservaId = 3, Nome = "Jucelino", InicioLocalizacao = "São Paulo", FimLocalizacao = "Av.Paulista" },
-                new Reservation { ReservaId = 4, Nome = "Lampião", InicioLocalizacao = "Piedade", FimLocalizacao = "Praia de Piedade" },
-                new Reservation { ReservaId = 5, Nome = "Maria Bonita", InicioLocalizacao = "Av.Bernardo Vieira", FimLocalizacao = "Praia de Candeias" }
+                new Reservation { ReservaId = 1, Nome = "Diego Ferreira", InicioLocacao = "Recife", FimLocacao = "Av.Marquês de Olinda" },
+                new Reservation { ReservaId = 2, Nome = "Severina", InicioLocacao = "Jaboatão dos Guararapes", FimLocacao = "Av.Emirates" },
+                new Reservation { ReservaId = 3, Nome = "Jucelino", InicioLocacao = "São Paulo", FimLocacao = "Av.Paulista" },
+                new Reservation { ReservaId = 4, Nome = "Lampião", InicioLocacao = "Piedade", FimLocacao = "Praia de Piedade" },
+                new Reservation { ReservaId = 5, Nome = "Maria Bonita", InicioLocacao = "Av.Bernardo Vieira", FimLocacao = "Praia de Candeias" }
 
             }.ForEach( r => AddReservation(r));
         }

@@ -21,8 +21,8 @@ namespace APIReservation.Controllers
         public Reservation Post([FromBody] Reservation res) => repository.AddReservation(
             new Reservation {
                 Nome = res.Nome,
-                InicioLocalizacao = res.InicioLocalizacao,
-                FimLocalizacao = res.FimLocalizacao
+                InicioLocacao = res.InicioLocacao,
+                FimLocacao = res.FimLocacao
             });
 
         [HttpPut]
