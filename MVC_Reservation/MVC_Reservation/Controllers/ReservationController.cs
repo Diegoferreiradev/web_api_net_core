@@ -63,6 +63,58 @@ namespace MVC_Reservation.Controllers
 
             return View(reservationSend);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateReservation(int id)
+        {
+            Reservation reservation = new Reservation();
+
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync(apiUrl + "/" + id))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    reservation = JsonConvert.DeserializeObject<Reservation>(apiResponse);
+                }
+            }
+            return View(reservation);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateReservation(Reservation reservation)
+        {
+            Reservation reservationSend = new Reservation();
+
+            using (var httpClient = new HttpClient())
+            {
+                var content = new MultipartFormDataContent();
+                content.Add(new StringContent(reservation.ReservaId.ToString()), "ReservaId");
+                content.Add(new StringContent(reservation.Nome), "Nome");
+                content.Add(new StringContent(reservation.InicioLocacao), "InicioLocacao");
+                content.Add(new StringContent(reservation.FimLocacao), "FimLocacao");
+
+                using (var response = await httpClient.PutAsync(apiUrl, content))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    ViewBag.Result = "Sucesso";
+                    reservationSend = JsonConvert.DeserializeObject<Reservation>(apiResponse);
+                }
+            }
+            return View(reservationSend);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteReservation(int reservationId)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.DeleteAsync(apiUrl + "/" + reservationId))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                }
+            }
+            return RedirectToAction("Index");
+        }
     }
 
 }

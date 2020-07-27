@@ -1,0 +1,12 @@
+﻿@model Reservation
+
+@{
+    ViewData["Title"] = "DeleteReservation";
+    Layout = "~/Views/Shared/_reservationLayout.cshtml";
+}
+
+<form asp-action="DeleteReservation"  method="post">
+    <input type="hidden" value="@Model.ReservaId" name="ReservaId" />
+    <input type="image" src="~/icon/close.png" />
+</form>
+
