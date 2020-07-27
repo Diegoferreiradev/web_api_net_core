@@ -26,7 +26,7 @@ namespace APIReservation.Controllers
             });
 
         [HttpPut]
-        public Reservation Put([FromBody] Reservation res) => repository.UpdateReservation(res);
+        public Reservation Put([FromForm] Reservation res) => repository.UpdateReservation(res);
 
         [HttpPatch("{id}")]
         public StatusCodeResult Patch(int id, [FromForm] JsonPatchDocument<Reservation> patch)
